@@ -25,6 +25,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         loadUserDefaults()
     }
+    
+    
 //************************************
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentGredes.count
@@ -55,6 +57,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 //************************************
     func loadUserDefaults() {
+        //userDefaultsObj.removeKey(theKey: "gradeCouse")
         if userDefaultsObj.doesKeyExist(theKey: "gradeCouse") {
             studentGredes = userDefaultsObj.getValue(theKey: "gradeCouse") as! [studentName: [couseName: gradeCouse]]
         } else {
