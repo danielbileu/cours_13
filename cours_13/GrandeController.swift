@@ -1,37 +1,32 @@
-//
-//  GrandeController.swift
-//  cours_13
-//
-//  Created by João Carlos Fernandes Neto on 17-11-24.
-//  Copyright © 2017 João Carlos Fernandes Neto. All rights reserved.
-//************************************
+
+//===================
 import UIKit
 import Foundation
-//************************************
+//===================
 class GrandeController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-//************************************
+//===================
     let userDefaultsObj = UserDefaultsManager()
-//************************************
+//===================
     @IBOutlet weak var grandeField: UITextField!
     @IBOutlet weak var couseField: UITextField!
     @IBOutlet weak var student_name_label: UILabel!
     @IBOutlet weak var course_grande_tableveiw: UITableView!
-//************************************
+//===================
     typealias studentName = String
     typealias couseName = String
     typealias gradeCouse = Double
-//************************************
+//===================
     var studentGredes: [studentName: [couseName: gradeCouse]]!
     var arrayOfCourse: [couseName]!
     var arrayOfGrades: [gradeCouse]!
-//************************************
+//===================
     override func viewDidLoad() {
         super.viewDidLoad()
         student_name_label.text = userDefaultsObj.getValue(theKey: "name") as? String
         loadUserDefaults()
         fillUpArray()
     }
-//************************************
+//===================
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfCourse.count
     }
@@ -50,14 +45,14 @@ class GrandeController: UIViewController, UITableViewDelegate, UITableViewDataSo
         userDefaultsObj.setKey(theValue: name as AnyObject, theKey: "name")
         performSegue(withIdentifier: "proto", sender: nil)
     }
-  //************************************
+ //===================
     func fillUpArray() {
         let name = student_name_label.text
         let couses_and_grands = studentGredes[name!]
         arrayOfCourse = [couseName](couses_and_grands!.keys)
         arrayOfGrades = [gradeCouse](couses_and_grands!.values)
     }
-   //************************************
+   //===================
     func loadUserDefaults() {
         if userDefaultsObj.doesKeyExist(theKey: "gradeCouse") {
             studentGredes = userDefaultsObj.getValue(theKey: "gradeCouse") as! [studentName: [couseName: gradeCouse]]
@@ -65,7 +60,7 @@ class GrandeController: UIViewController, UITableViewDelegate, UITableViewDataSo
             studentGredes = [studentName: [couseName: gradeCouse]]()
         }
     }
-  //************************************
+  //===================
     @IBAction func addCourseAndGrande(_ sender: UIButton) {
         let name = student_name_label.text!
         var student_courses = studentGredes[name]!
@@ -75,7 +70,7 @@ class GrandeController: UIViewController, UITableViewDelegate, UITableViewDataSo
         fillUpArray()
         course_grande_tableveiw.reloadData()
     }
-   //************************************
+   //===================
 }
 
 
