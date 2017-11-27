@@ -81,4 +81,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //
 //print(this)
 
+//func produitCroise(dictDeNotes: [Double: Double], regleDe3: (_ somme: Double, _ sur: Double) -> Double) -> String {
+//    let sommeNotes = [Double](dictDeNotes.keys).reduce(0, +)
+//    let sommeSur = [Double](dictDeNotes.values).reduce(0, +)
+//    let conversion = regleDe3(sommeNotes, sommeSur)
+//    return String(format: "Grade = %0.1f/%0.1f or %0.1f/100", sommeNotes, sommeSur, conversion)
+//}
+//
+//let dictNotes = [12.5: 20.0, 13.8: 20.0, 55.3: 50.0, 77.4: 100.0]
+//print(produitCroise(dictDeNotes: dictNotes) { $0 * 100.0 / $1 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
