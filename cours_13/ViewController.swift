@@ -69,7 +69,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 }
 //===================
 
-//Méthode reduce - faire moyanne
+//Méthode reduce - faire moyenne
 
 //func average(tabNotes: [Double], moyenne: (_ sum: Double, _ nombreDeNotes: Double) -> Double) -> Double {
 //    let somme = tabNotes.reduce(0, +)
