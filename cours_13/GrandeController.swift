@@ -11,7 +11,8 @@ class GrandeController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var couseField: UITextField!
     @IBOutlet weak var student_name_label: UILabel!
     @IBOutlet weak var course_grande_tableveiw: UITableView!
-//===================
+    @IBOutlet weak var average: UILabel!
+    //===================
     typealias studentName = String
     typealias couseName = String
     typealias gradeCouse = Double
@@ -25,6 +26,7 @@ class GrandeController: UIViewController, UITableViewDelegate, UITableViewDataSo
         student_name_label.text = userDefaultsObj.getValue(theKey: "name") as? String
         loadUserDefaults()
         fillUpArray()
+        average.text = String(format: "Average: %0.1f", average1(tabNotes: arrayOfGrades, moyenne: {$0 / $1}))
     }
 //===================
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,6 +73,11 @@ class GrandeController: UIViewController, UITableViewDelegate, UITableViewDataSo
         course_grande_tableveiw.reloadData()
     }
    //===================
+    func average1(tabNotes: [Double], moyenne: (_ sum: Double, _ nombreDeNotes: Double) -> Double) -> Double {
+        let somme = tabNotes.reduce(0, +)
+        let resultat = moyenne(somme, Double(tabNotes.count ))
+        return resultat
+    }
 }
 
 
