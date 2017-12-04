@@ -9,10 +9,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let userDefaultsObj = UserDefaultsManager()
 //===================
     typealias studentName = String
-    typealias couseName = String
-    typealias gradeCouse = Double
+    typealias courseName = String
+    typealias gradeCourse = Double
 //===================
-    var studentGredes: [studentName: [couseName: gradeCouse]]!
+    var studentGredes: [studentName: [courseName: gradeCourse]]!
 //===================
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if editinsStyle == UITableViewCellEditingStyle.delete {
             let name = [studentName](studentGredes.keys)[indexPath.row]
             studentGredes[name] = nil
-            userDefaultsObj.setKey(theValue: studentGredes as AnyObject, theKey: "gradeCouse")
+            userDefaultsObj.setKey(theValue: studentGredes as AnyObject, theKey: "gradeCourse")
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
     }
@@ -51,18 +51,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //===================
     func loadUserDefaults() {
         //userDefaultsObj.removeKey(theKey: "gradeCouse")
-        if userDefaultsObj.doesKeyExist(theKey: "gradeCouse") {
-            studentGredes = userDefaultsObj.getValue(theKey: "gradeCouse") as! [studentName: [couseName: gradeCouse]]
+        if userDefaultsObj.doesKeyExist(theKey: "gradeCourse") {
+            studentGredes = userDefaultsObj.getValue(theKey: "gradeCourse") as! [studentName: [courseName: gradeCourse]]
         } else {
-            studentGredes = [studentName: [couseName: gradeCouse]]()
+            studentGredes = [studentName: [courseName: gradeCourse]]()
         }
     }
 //===================
     @IBAction func addstudent(_ sender: UIButton) {
         if student_name_Fild.text != "" {
-            studentGredes[student_name_Fild.text!] = [couseName: gradeCouse]()
+            studentGredes[student_name_Fild.text!] = [courseName: gradeCourse]()
             student_name_Fild.text = ""
-            userDefaultsObj.setKey(theValue: studentGredes as AnyObject, theKey: "gradeCouse")
+            userDefaultsObj.setKey(theValue: studentGredes as AnyObject, theKey: "gradeCourse")
             student_name_tableview.reloadData()
         }
     }

@@ -14,19 +14,20 @@ class GrandeController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var average: UILabel!
     //===================
     typealias studentName = String
-    typealias couseName = String
-    typealias gradeCouse = Double
+    typealias courseName = String
+    typealias gradeCourse = Double
 //===================
-    var studentGredes: [studentName: [couseName: gradeCouse]]!
-    var arrayOfCourse: [couseName]!
-    var arrayOfGrades: [gradeCouse]!
+    var studentGredes: [studentName: [courseName: gradeCourse]]!
+    var arrayOfCourse: [courseName]!
+    var arrayOfGrades: [gradeCourse]!
 //===================
     override func viewDidLoad() {
         super.viewDidLoad()
         student_name_label.text = userDefaultsObj.getValue(theKey: "name") as? String
         loadUserDefaults()
         fillUpArray()
-        average.text = String(format: "Average: %0.1f", average1(tabNotes: arrayOfGrades, moyenne: {$0 / $1}))
+//        average.text = String(format: "Average: %0.1f", average1(tabNotes: arrayOfGrades, moyenne: {$0 / $1}))
+        average.text = verifAverage(dictDeNotes: moienne(), regleDe3:{ $0 * 100.0 / $1})
     }
 //===================
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,35 +43,31 @@ class GrandeController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let name = [studentName](studentGredes.keys)[indexPath.row]
-        userDefaultsObj.setKey(theValue: name as AnyObject, theKey: "name")
-        performSegue(withIdentifier: "proto", sender: nil)
-    }
  //===================
     func fillUpArray() {
         let name = student_name_label.text
         let couses_and_grands = studentGredes[name!]
-        arrayOfCourse = [couseName](couses_and_grands!.keys)
-        arrayOfGrades = [gradeCouse](couses_and_grands!.values)
+        arrayOfCourse = [courseName](couses_and_grands!.keys)
+        arrayOfGrades = [gradeCourse](couses_and_grands!.values)
     }
    //===================
     func loadUserDefaults() {
-        if userDefaultsObj.doesKeyExist(theKey: "gradeCouse") {
-            studentGredes = userDefaultsObj.getValue(theKey: "gradeCouse") as! [studentName: [couseName: gradeCouse]]
+        if userDefaultsObj.doesKeyExist(theKey: "gradeCourse") {
+            studentGredes = userDefaultsObj.getValue(theKey: "gradeCourse") as! [studentName: [courseName: gradeCourse]]
         } else {
-            studentGredes = [studentName: [couseName: gradeCouse]]()
+            studentGredes = [studentName: [courseName: gradeCourse]]()
         }
     }
   //===================
     @IBAction func addCourseAndGrande(_ sender: UIButton) {
         let name = student_name_label.text!
         var student_courses = studentGredes[name]!
-        student_courses[couseField.text!] = gradeCouse(grandeField.text!)
+        student_courses[couseField.text!] = gradeCourse(grandeField.text!)
         studentGredes[name] = student_courses
-        userDefaultsObj.setKey(theValue: studentGredes as AnyObject, theKey: "gradeCouse")
+        userDefaultsObj.setKey(theValue: studentGredes as AnyObject, theKey: "gradeCourse")
         fillUpArray()
         course_grande_tableveiw.reloadData()
+        average.text = verifAverage(dictDeNotes: moienne(), regleDe3:{ $0 * 100.0 / $1})
     }
    //===================
     func average1(tabNotes: [Double], moyenne: (_ sum: Double, _ nombreDeNotes: Double) -> Double) -> Double {
@@ -78,6 +75,23 @@ class GrandeController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let resultat = moyenne(somme, Double(tabNotes.count ))
         return resultat
     }
+    func verifAverage(dictDeNotes: [Double: Double], regleDe3: (_ somme: Double, _ sur: Double) -> Double) -> String{
+        
+        let sommeNotes = [Double](dictDeNotes.keys).reduce(0, +)
+        let sommesur = [Double](dictDeNotes.values).reduce(0, +)
+        let conversion = regleDe3(sommeNotes, sommesur)
+        return String(format: "Average = %0.1f/%0.1f or %0.1f/100", sommeNotes, sommesur, conversion)
+        
+    }
+    
+    func moienne () ->  [Double: Double] {
+        let average = arrayOfGrades.reduce(0, +)
+        let somme = arrayOfGrades.count
+        let moienne = Double(average/Double(somme))
+        let dictNotes = [moienne: 10.0]
+        return dictNotes
+    }
+    
 }
 
 
