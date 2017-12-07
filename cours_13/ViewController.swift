@@ -2,114 +2,80 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-//===================
+    
+    //--------------------------------
+    //connection champ e tableview
+    @IBOutlet weak var student_name_field: UITextField!
     @IBOutlet weak var student_name_tableview: UITableView!
-    @IBOutlet weak var student_name_Fild: UITextField!
-//===================
-    let userDefaultsObj = UserDefaultsManager()
-//===================
+    
+    //--------------------------------
     typealias studentName = String
-    typealias courseName = String
-    typealias gradeCourse = Double
-//===================
-    var studentGredes: [studentName: [courseName: gradeCourse]]!
-//===================
+    typealias course = String
+    typealias grade = Double
+    
+    //--------------------------------
+    let userDefautsObj = UserDefaultsManager()
+    var studentGrades: [studentName: [course: grade]]!
+    
+    //--------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         loadUserDefaults()
     }
     
-    
-//===================
+    //--------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentGredes.count
+        return studentGrades.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: nil)
-        cell.textLabel?.text = [studentName](studentGredes.keys)[indexPath.row]
+        cell.textLabel?.text = [studentName](studentGrades.keys)[indexPath.row]
         return cell
     }
-    func tableView(_ tableView: UITableView, commit editinsStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editinsStyle == UITableViewCellEditingStyle.delete {
-            let name = [studentName](studentGredes.keys)[indexPath.row]
-            studentGredes[name] = nil
-            userDefaultsObj.setKey(theValue: studentGredes as AnyObject, theKey: "gradeCourse")
+    
+    //-------------------------------- pour supprimer le row
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            let name = [studentName](studentGrades.keys)[indexPath.row]
+            studentGrades[name] = nil
+            userDefautsObj.setKey(theValue: studentGrades as AnyObject, theKey: "grades")
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
     }
+    
+    //---Pour garder dans la mémoire le nom. Pour montrer sur label d'autre interface---
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let name = [studentName](studentGredes.keys)[indexPath.row]
-        userDefaultsObj.setKey(theValue: name as AnyObject, theKey: "name")
+        let name = [studentName](studentGrades.keys)[indexPath.row]
+        userDefautsObj.setKey(theValue: name as AnyObject, theKey: "name")
         performSegue(withIdentifier: "seg", sender: nil)
     }
-//===================
+    
+    //---Pour faire le clavier apparaitre et dispparaitre ---
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-//===================
-    func loadUserDefaults() {
-        //userDefaultsObj.removeKey(theKey: "gradeCouse")
-        if userDefaultsObj.doesKeyExist(theKey: "gradeCourse") {
-            studentGredes = userDefaultsObj.getValue(theKey: "gradeCourse") as! [studentName: [courseName: gradeCourse]]
-        } else {
-            studentGredes = [studentName: [courseName: gradeCourse]]()
-        }
-    }
-//===================
-    @IBAction func addstudent(_ sender: UIButton) {
-        if student_name_Fild.text != "" {
-            studentGredes[student_name_Fild.text!] = [courseName: gradeCourse]()
-            student_name_Fild.text = ""
-            userDefaultsObj.setKey(theValue: studentGredes as AnyObject, theKey: "gradeCourse")
+    
+    //---Celui-ci c'est le bouton de connection pour des courses et des notes---
+    @IBAction func addStudent(_ sender: UIButton) {
+        if student_name_field.text != "" {
+            studentGrades[student_name_field.text!] = [course: grade]()
+            student_name_field.text = ""
+            userDefautsObj.setKey(theValue: studentGrades as AnyObject, theKey: "grades")
             student_name_tableview.reloadData()
         }
     }
+    
+    //--------------------------------
+    func loadUserDefaults(){ //---Ça c'est pour garder en mémoire studentGrades
+        if userDefautsObj.doesKeyExist(theKey: "grades"){
+            studentGrades = userDefautsObj.getValue(theKey: "grades") as!
+                [studentName: [course: grade]]
+        } else {
+            studentGrades = [studentName: [course: grade]]()
+        }
+    }
+    
+    //--------------------------------
 }
-//===================
-
-//Méthode reduce - faire moyenne
-
-//func average(tabNotes: [Double], moyenne: (_ sum: Double, _ nombreDeNotes: Double) -> Double) -> Double {
-//    let somme = tabNotes.reduce(0, +)
-//    let resultat = moyenne(somme, Double(tabNotes.count))
-//    return resultat
-//}
-//
-//let this = String(format: "%0.1f", average(tabNotes: notes, moyenne: {$0 / $1}))
-//
-//print(this)
-
-//func produitCroise(dictDeNotes: [Double: Double], regleDe3: (_ somme: Double, _ sur: Double) -> Double) -> String {
-//    let sommeNotes = [Double](dictDeNotes.keys).reduce(0, +)
-//    let sommeSur = [Double](dictDeNotes.values).reduce(0, +)
-//    let conversion = regleDe3(sommeNotes, sommeSur)
-//    return String(format: "Grade = %0.1f/%0.1f or %0.1f/100", sommeNotes, sommeSur, conversion)
-//}
-//
-//let dictNotes = [12.5: 20.0, 13.8: 20.0, 55.3: 50.0, 77.4: 100.0]
-//print(produitCroise(dictDeNotes: dictNotes) { $0 * 100.0 / $1 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
