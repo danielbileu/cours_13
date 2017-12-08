@@ -7,7 +7,6 @@ class GradeController: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var student_name_label: UILabel!
     @IBOutlet weak var course_field: UITextField!
     @IBOutlet weak var grade_field: UITextField!
-    
     //-------------------------
     typealias studentName = String
     typealias course = String
@@ -107,7 +106,7 @@ class GradeController: UIViewController, UITableViewDelegate, UITableViewDataSou
         let sumOfNotes = [Double](dictDeNotes.keys).reduce(0, +)
         let sumSum = [Double](dictDeNotes.values).reduce(0, +)
         let convert = regleDe3(sumOfNotes, sumSum)
-        return String(format: "Average Grades = %0.1f/%0.1f or %0.1f/100", sumOfNotes, sumSum, convert)
+        return String(format: "Average Grades = %00.1f/%0.1f or %0.1f/100", sumOfNotes, sumSum, convert)
     }
     
     //--- ---

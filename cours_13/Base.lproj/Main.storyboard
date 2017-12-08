@@ -175,7 +175,7 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" identifier="View Controller" id="ehG-Np-YO0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ava=erage Grade" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBL-UV-qMt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avarage Grade" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBL-UV-qMt">
                                 <rect key="frame" x="18" y="599" width="378" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.69411892360000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -195,9 +195,7 @@
                         <outlet property="averageDisplay" destination="uBL-UV-qMt" id="8LX-VY-gmR"/>
                         <outlet property="course_field" destination="2dQ-YO-Eic" id="uim-1V-c25"/>
                         <outlet property="course_grade_tableview" destination="yCa-fq-crP" id="jyR-L8-Bas"/>
-                        <outlet property="course_grande_tableveiw" destination="yCa-fq-crP" id="tZe-nv-7e2"/>
                         <outlet property="grade_field" destination="geL-Y8-ZfC" id="p9M-nk-cZV"/>
-                        <outlet property="save_course_and_grade" destination="BvA-KV-atA" id="8S0-JR-ZON"/>
                         <outlet property="student_name_label" destination="cFc-Qh-GfI" id="0n9-8S-Eiu"/>
                     </connections>
                 </viewController>

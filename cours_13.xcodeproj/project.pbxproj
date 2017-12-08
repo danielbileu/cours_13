@@ -78,7 +78,7 @@
 		9B2010511FCF761E00813374 /* Champagne & Limousines Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Champagne & Limousines Bold Italic.ttf"; sourceTree = "<group>"; };
 		9B2010521FCF761E00813374 /* Champagne & Limousines Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Champagne & Limousines Bold.ttf"; sourceTree = "<group>"; };
 		9B2010571FCF7C1300813374 /* evaluation+.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "evaluation+.png"; sourceTree = "<group>"; };
-		9B9953761FD8A9BA005C02DB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../Documents/Developper_Daniel/automne_2017/prog_algo/cours_13/Main.storyboard; sourceTree = "<group>"; };
+		9B9953761FD8A9BA005C02DB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = cours_13/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B99537A1FD8B33B005C02DB /* logo-evaluation--02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-evaluation--02.png"; sourceTree = "<group>"; };
 		9B99537B1FD8B33C005C02DB /* arrow-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-03.png"; sourceTree = "<group>"; };
 		9B99537C1FD8B33C005C02DB /* logo-evaluation-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-evaluation-.png"; sourceTree = "<group>"; };
