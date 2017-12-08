@@ -45,7 +45,6 @@
                                 </state>
                                 <connections>
                                     <action selector="addStudent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6ge-BU-MQt"/>
-                                    <action selector="addstudent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sDg-Bb-5b0"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Student name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ol4-lk-sF6">
@@ -67,7 +66,6 @@
                         <viewLayoutGuide key="safeArea" id="y4J-tb-xbq"/>
                     </view>
                     <connections>
-                        <outlet property="student_name_Fild" destination="ol4-lk-sF6" id="dmX-05-3uF"/>
                         <outlet property="student_name_field" destination="ol4-lk-sF6" id="45C-Zj-fe5"/>
                         <outlet property="student_name_tableview" destination="Q3s-zW-O8W" id="jV6-Fd-iTh"/>
                         <segue destination="5cF-O5-2do" kind="presentation" identifier="seg" id="xHJ-Dh-PPf"/>
@@ -155,8 +153,7 @@
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="addCourseAndGrande:" destination="5cF-O5-2do" eventType="touchUpInside" id="BEY-qc-ggT"/>
-                                    <action selector="save_corse_and_grade:" destination="5cF-O5-2do" eventType="touchUpInside" id="dbP-hc-NTB"/>
+                                    <action selector="save_course_and_grade:" destination="5cF-O5-2do" eventType="touchUpInside" id="ERk-h8-mOw"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFc-Qh-GfI">
@@ -195,14 +192,12 @@
                         <viewLayoutGuide key="safeArea" id="Jtr-NO-5Be"/>
                     </view>
                     <connections>
-                        <outlet property="average" destination="uBL-UV-qMt" id="xl2-sb-8Xa"/>
                         <outlet property="averageDisplay" destination="uBL-UV-qMt" id="8LX-VY-gmR"/>
                         <outlet property="course_field" destination="2dQ-YO-Eic" id="uim-1V-c25"/>
                         <outlet property="course_grade_tableview" destination="yCa-fq-crP" id="jyR-L8-Bas"/>
                         <outlet property="course_grande_tableveiw" destination="yCa-fq-crP" id="tZe-nv-7e2"/>
-                        <outlet property="couseField" destination="2dQ-YO-Eic" id="6hi-mi-W7z"/>
                         <outlet property="grade_field" destination="geL-Y8-ZfC" id="p9M-nk-cZV"/>
-                        <outlet property="grandeField" destination="geL-Y8-ZfC" id="sqa-0g-m5L"/>
+                        <outlet property="save_course_and_grade" destination="BvA-KV-atA" id="8S0-JR-ZON"/>
                         <outlet property="student_name_label" destination="cFc-Qh-GfI" id="0n9-8S-Eiu"/>
                     </connections>
                 </viewController>

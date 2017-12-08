@@ -79,7 +79,7 @@ class GradeController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     //---Add course and Grade---
-    @IBAction func save_corse_and_grade(_ sender: UIButton) {
+    @IBAction func save_course_and_grade(_ sender: UIButton) {
         let name = student_name_label.text!
         var student_courses = studentGrades[name]!
         student_courses[course_field.text!] = Double(grade_field.text!)
