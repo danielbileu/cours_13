@@ -67,7 +67,8 @@ class GradeController: UIViewController, UITableViewDelegate, UITableViewDataSou
             fillUpArray()
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
-    }
+            }
+    
     //---Pour garder en mémoire les grades des étudiants---
     func loadUserDefaults(){
         if userDefautsObj.doesKeyExist(theKey: "grades"){
@@ -106,7 +107,7 @@ class GradeController: UIViewController, UITableViewDelegate, UITableViewDataSou
         let sumOfNotes = [Double](dictDeNotes.keys).reduce(0, +)
         let sumSum = [Double](dictDeNotes.values).reduce(0, +)
         let convert = regleDe3(sumOfNotes, sumSum)
-        return String(format: "Average Grades = %00.1f/%0.1f or %0.1f/100", sumOfNotes, sumSum, convert)
+        return String(format: "Average Grades = %0.1f/%0.1f or %0.1f/100", sumOfNotes, sumSum, convert)
     }
     
     //--- ---
