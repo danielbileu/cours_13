@@ -19,13 +19,14 @@ class GradeController: UIViewController, UITableViewDelegate, UITableViewDataSou
     var arrOfGrades: [grade]!
     
     //--------------------------
-    override func viewDidLoad() {
+    override  func viewDidLoad() {
         super.viewDidLoad()
         student_name_label.text = userDefautsObj.getValue(theKey: "name") as? String
         loadUserDefaults()
         fillUpArray()
         //let this = String(format: "%0.1f", averageNote(tabNotes: arrOfGrades, moyenne: {$0 * 100.0 / $1}))
         averageDisplay.text = verifAverage(dictDeNotes: intermediaire(), regleDe3:{ $0 * 100.0 / $1})
+
     }
     
     //--------------------------
